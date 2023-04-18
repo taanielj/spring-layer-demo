@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
+
     @Autowired
     UserService userService;
 
     @PostMapping("/user")
     public User saveUser(@RequestBody User user) {
-        User createdUser = userService.save(new User(
+        return userService.save(new User(
                 user.getId(),
                 user.getUserName(),
                 user.getFirstName(),
                 user.getLastName()
         ));
-        return createdUser;
     }
 
     @GetMapping("/user/{id}")
